@@ -21,7 +21,7 @@ namespace UpdateSharp.Test.TestData
             ".dat",".txt"
         };
 
-        
+        private static readonly Random random = new Random();
 
         /// <summary>
         /// WARNING: the rootFolder will be deleted before creating.
@@ -31,10 +31,6 @@ namespace UpdateSharp.Test.TestData
         public async Task CreateRandomStructure()
         {
             await CreateRandomStructure(@"D:\Temp\updater\1.0", "-Version1");
-            await CreateRandomStructure(@"D:\Temp\updater\1.1", "-Version11");
-            await CreateRandomStructure(@"D:\Temp\updater\2.0", "-Version2");
-            await CreateRandomStructure(@"D:\Temp\updater\2.0.1", "-Version201");
-            await CreateRandomStructure(@"D:\Temp\updater\2.1", "-Version21");
         }
 
         public async Task CreateRandomStructure(string rootFolder, string versionPostfix)
@@ -42,14 +38,12 @@ namespace UpdateSharp.Test.TestData
             if (Directory.Exists(rootFolder))
             {
                 Directory.Delete(rootFolder, true);
+
+                // Make sure folder is deleted
+                await Task.Delay(500);
             }
 
-            // Make sure folder is deleted
-            await Task.Delay(500);
-
             Directory.CreateDirectory(rootFolder);
-
-            var random = new Random();
 
             Action<string, string, int> createCurrentFolder = null;
             createCurrentFolder = (currentFolder, currentPath, currentDepth) =>
