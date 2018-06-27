@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,11 @@ namespace UpdateSharp.Common
 
         public static string DefaultVersionFileName { get; set; } 
             = "version.json";
+
+        public static JsonSerializerSettings JsonSerializerSettings { get; set; } = new JsonSerializerSettings()
+        {
+            Converters = new List<JsonConverter>() { new VersionConverter(), },
+        };
 
         private static string DefaultHashFunction(Stream data)
         {

@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\UpdateSharpUtilsTests.cs" />
     <Compile Include="Server\UpdateSharpServerUtilsTests.cs" />
     <Compile Include="TestData\TestCreator.cs" />
     <Compile Include="TestData\UpdatePatches.cs" />
@@ -59,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TestData\test-10.json">
+    <None Include="TestData\test-1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestData\test-101.json">

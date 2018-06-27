@@ -72,9 +72,9 @@ namespace UpdateSharp.Common
                         }
                     }
                 }
-
-                scanFolder(current.Files, latest.Files);
             };
+
+            scanFolder(current.Files, latest.Files);
 
             return result;
         }
